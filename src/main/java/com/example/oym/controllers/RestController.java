@@ -26,6 +26,7 @@ public class RestController {
     public Employe findEmployeName(@PathVariable int id){
         return this.empservice.findById(id);
     }
+    k
 
     @GetMapping("employes/{name}")
     public Employe findEmployeId(@PathVariable String name){
