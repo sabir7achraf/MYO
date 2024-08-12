@@ -3,6 +3,8 @@ package com.example.oym.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table
 @AllArgsConstructor@NoArgsConstructor@Getter@Setter@Builder
@@ -17,7 +19,5 @@ public class Employe {
     private int empage;
     private String empcity;
     private String emppost;
-
-
-
+    private  RolesTypes role;
 }

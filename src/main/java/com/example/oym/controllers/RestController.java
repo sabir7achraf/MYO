@@ -1,11 +1,10 @@
 package com.example.oym.controllers;
 
+import com.example.oym.DTO.EmployeDto;
 import com.example.oym.entity.Employe;
+import com.example.oym.entity.RolesTypes;
 import com.example.oym.services.EmpService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,21 +21,28 @@ public class RestController {
        return this.empservice.findAll();
     }
 
-    @GetMapping("employes/{id}")
-    public Employe findEmployeName(@PathVariable int id){
+    @GetMapping("employeId/{id}")
+    public Employe findEmployeid(@PathVariable int id){
         return this.empservice.findById(id);
     }
-    k
 
-    @GetMapping("employes/{name}")
-    public Employe findEmployeId(@PathVariable String name){
+
+    @GetMapping("employeName/{name}")
+    public Employe findEmployename(@PathVariable String name){
         return this.empservice.findByName(name);
     }
 
     @PostMapping("/new/employes")
-    public Employe addEmploye(@RequestBody Employe employe){
-        return this.empservice.save(employe);
+    public Employe addEmploye(@RequestBody Employe employedto){
+        return this.empservice.saveEmploye(employedto);
     }
 
-
+    @GetMapping("employesRole/{role}")
+    public List<Employe> findEmployesRole(@PathVariable RolesTypes role){
+        return this.empservice.findByRole(role);
+    }
+    @PutMapping("employes/update")
+    public Employe updateEmploye(@RequestBody Employe employe){
+        return this.empservice.saveEmploye(employe);
+    }
 }
